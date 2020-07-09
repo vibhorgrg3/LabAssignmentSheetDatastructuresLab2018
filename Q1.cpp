@@ -16,6 +16,9 @@ public:
 	static void copy_called(){
 		counter++;
 	}
+	static get_counter(){
+		return counter;
+	}
 
 	//a set and a get function for each data member.
 	void set_itmNumber(string a){itmNumber=a;};
@@ -40,6 +43,7 @@ invoice::invoice(const invoice &source):
 	itmName{source.itmName},
 	qnt{source.qnt},
 	price_{source.price_}{
+	    //cout<<"copy\n";
 		copy_called();
 	}
 
@@ -76,6 +80,9 @@ int main(int argc, char const *argv[])
     m=maximumQnt(a,b);
     cout<<endl<<m;
 
+    invoice copy1(a);
+    invoice copy2(b);
+    cout<< invoice::get_counter();
 	return 0;
 }
 
